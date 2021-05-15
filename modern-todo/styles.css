@@ -351,13 +351,3 @@ button:active{
         font-size: var(--font-sm);
     }
 }
-@media (max-height: 640px){
-    .message-wrapper{
-        width: var(--width);
-        height: 80%;
-        border-radius: 5px;
-        background: var(--primary);
-        gap: 1.5rem;
-        padding: 2rem 0;
-    }
-}

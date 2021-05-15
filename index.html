@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Todo app</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  
+</head>
+<body class="light-mode">
+  <div class="header">
+    <div class="searchbox">
+      <div class="search-inner">
+        <h1>TODO</h1>
+        <button class="mode-toggle">
+          <i class="ri-contrast-2-line"></i>
+        </button>
+      </div>
+      <div class="search-wrapper">
+        <div class="checkbox-wrapper">
+          <div class="checkbox">
+            <img src="images/tick.png" alt="">
+          </div>
+        </div>
+        <div action="" id="search">
+          <input type="text" name="" id="" placeholder="Create a new todo..">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="todo">
+    <div class="empty-message">
+      <div class="message-wrapper">
+        <i class="ri-file-add-fill"></i>
+        <p>You dont have anything on your todo and this is the perfect time to be productive.</p>
+        <button class="create-todo"><i class="ri-add-line"></i>&nbsp;Create new todo</button>
+      </div>
+    </div>
+    <div class="todo-outer-wrapper">
+      <div class="todo-items-wrapper">
+        <div class="todo-items">
+        </div>
+        <div class="todo-footer">
+          <span class="pending">
+          </span>
+          <div class="nav-tabs">
+            <button class="nav nav-active">All</button>
+            <button class="nav">Active</button>
+            <button class="nav">Completed</button>
+          </div>
+          <button class="clear">
+            <i class="ri-delete-bin-line"></i>&nbsp;
+            Clear Completed
+          </button>
+        </div>
+      </div>
+      <div class="nav-tabs nav-tabs-res">
+        <button class="nav nav-active">All</button>
+        <button class="nav">Active</button>
+        <button class="nav">Completed</button>
+      </div>  
+    </div>
+  </div>
+  <!-- <div class="popup">
+    <div class="popup-modal">
+      <h1><i class="ri-error-warning-line"></i>&nbsp;Alert</h1>
+    </div>
+  </div> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

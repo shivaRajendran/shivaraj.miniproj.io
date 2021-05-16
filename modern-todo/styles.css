@@ -429,7 +429,7 @@ input:focus{
         --width: 90vw;
         --height: 45px;
         --font-lg: 1rem;
-        --font-sm: .5rem;
+        --font-sm: .7rem;
     }
     .light-mode{
         --bg: url('../images/bg-mobile-light.jpg');

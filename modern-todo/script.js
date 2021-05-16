@@ -155,10 +155,10 @@ $('.todo-items').on('click', '.checkbox-wrapper', function(e){
 });
 function loadData(todo, state){
     if (state === 'Active'){
-        $('.todo-items').append('<div class="todo-element"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div></div>');
+        $('.todo-items').append('<div class="todo-element"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action"> <i class="ri-close-fill" title = "Close todo"></i></div></div>');
     }
     else if (state === 'Completed'){
-        $('.todo-items').append('<div class="todo-element todo-done"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div></div>');
+        $('.todo-items').append('<div class="todo-element todo-done"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action"> <i class="ri-refresh-line" title = "Re-open todo"></i></div></div>');
     }
     // triggerClick();
 };

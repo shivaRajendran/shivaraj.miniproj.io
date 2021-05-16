@@ -148,6 +148,28 @@ body{
     place-items: center;
     position: relative;
 }
+.todo-action{
+    height: var(--height);
+    display: grid;
+    place-items: center;
+    width: 70px;
+    cursor: pointer;
+}
+.todo-action i{
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+}
+.todo-action .ri-close-fill{
+    color: red;
+    background: rgba(255, 0, 0,.25);
+}
+.todo-action .ri-refresh-line{
+    color: rgba(0, 255, 0,1);
+    background-color: rgba(0, 255, 0,.15);
+}
 .empty-message{
     position: absolute;
     width: 100%;

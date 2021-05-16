@@ -412,4 +412,7 @@ button:active{
     .modal{
         height: 60vh;
     }
+    .close-popup{
+        width: 50%;
+    }
 }

@@ -18,6 +18,7 @@ var master = [
 ];
 master = [];
 var lastEntry = 'All';
+var state = "";
 $('.mode-toggle').click(function(){
     $('body').toggleClass('dark-mode');
     $('.mode-toggle i').toggleClass('ri-contrast-2-line');
@@ -58,7 +59,7 @@ function triggerClick(){
             handleCompleted();
             break;
     }
-    $('#search input').focus();
+    // $('#search input').focus();
 }
 function init(){
     // $('.todo-element').remove();
@@ -77,12 +78,13 @@ $(document).on('keypress',function(e) {
     if(e.which == 13) {
         if( $(".popup").css('display') !== 'grid') {
             var data = $('input').val();
-            if (data === ""){
+            if (data.trim() === ""){
                 triggerClick();
                 refresh();
+                $('#search input').focus();
                 $('.popup .modal').remove();
-                loadModel('err', 'Please give some value inorder to create a todo item!');
-                $('input').val('');
+                state = 'err';
+                loadModel(state, 'Please give some value inorder to create a todo item!');
             }else{
                 for (var i = 0; i < master.length; i++){
                     if(master[i].name === data){
@@ -90,7 +92,8 @@ $(document).on('keypress',function(e) {
                         triggerClick();
                         $('.popup .modal').remove();
                         $('.popup').css('display', 'grid');
-                        loadModel('err', 'The item that you have entered is already in the list!');
+                        state = 'err';
+                        loadModel(state, 'The item that you have entered is already in the list!');
                         break;
                     }
                     else{
@@ -102,28 +105,35 @@ $(document).on('keypress',function(e) {
                         name: data,
                         status: 'Active'
                     });
-                    $('input').val('');
+                    focusInput();
                 }
                 triggerClick();
                 pendingData(lastEntry);
                 checkForEmpty();
             }
-            $('input').val('');
+            
         }
     }
     
 });
+function focusInput(){
+    $('input').val('');
+    $('#search input').focus();
+}
 $('.clear').click(function(){
     refresh();
     clearCompleted();
 });
 $('.popup').on('click', '.close-popup', function(){
+    if (state === 'err'){
+        focusInput();
+    }
     $('.popup').css('display', 'none');
     $('.popup .modal').remove();
     triggerClick();
 }); 
 $('.todo').on('click', '.create-todo',function(){
-    $('#search input').focus();
+    focusInput();
 });
 $('.todo-items').on('click', '.checkbox-wrapper', function(e){
    var selectedData = e.currentTarget.nextElementSibling.innerText;
@@ -139,7 +149,8 @@ $('.todo-items').on('click', '.checkbox-wrapper', function(e){
    }
    var active = master.filter((item) => item.status === 'Active');
    if (active.length === 0){
-       loadModel('success', 'Yay! you completed every todo. Enjoy the rest of your day!!')
+       state = 'success';
+       loadModel(state, 'Yay! you completed every todo. Enjoy the rest of your day!!')
    }
 });
 function loadData(todo, state){
@@ -232,7 +243,6 @@ function loadModel(type, message){
     $('.popup').css('display', 'grid');
     if (type === 'err'){
         $('.popup').append('<div class="modal err-modal"><div class="icon"><i class="ri-error-warning-line"></i></div><div class="modal-desc"><h1>Error</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
-        $('#search input').focus();
     }else{
         $('.popup').append('<div class="modal success-modal"><div class="icon"><i class="ri-checkbox-circle-line"></i></div><div class="modal-desc"><h1>Success</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
     }

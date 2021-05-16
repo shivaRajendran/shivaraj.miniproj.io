@@ -179,7 +179,7 @@ body{
     border-radius: 5px;
     transform: translateY(-60px);
     overflow: hidden;
-    box-shadow: 0 5px 20px var(--shadow);
+    box-shadow: 0 0 10px var(--shadow);
     background: var(--bg-secondary);
     /* display: none; */
 }
@@ -315,7 +315,7 @@ button:active{
     width: var(--width);
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 0 0 30px var(--shadow);
+    box-shadow: 0 0 10px var(--shadow);
     background: var(--bg-secondary);
     border-radius: 5px;
     height: var(--height);

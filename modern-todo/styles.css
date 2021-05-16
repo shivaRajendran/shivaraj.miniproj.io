@@ -412,7 +412,7 @@ button:active{
     border: solid 1px var(--text-secondary);
     background-color: transparent;
     padding: .5rem 1rem;
-    width: 30%;
+    width: 15%;
     cursor: pointer;
     color: var(--text-primary);
 }

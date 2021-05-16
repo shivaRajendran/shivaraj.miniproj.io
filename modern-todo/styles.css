@@ -428,7 +428,7 @@ input:focus{
     :root{
         --width: 90vw;
         --height: 45px;
-        --font-lg: .85rem;
+        --font-lg: 1rem;
         --font-sm: .5rem;
     }
     .light-mode{
@@ -453,7 +453,7 @@ input:focus{
         height: 35vh;
     }
     .close-popup, .btn-yes{
-        width: 20%;
+        width: 30%;
     }
     .modal-desc{
         flex: 9;      

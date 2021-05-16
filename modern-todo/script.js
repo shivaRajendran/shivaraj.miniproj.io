@@ -153,12 +153,39 @@ $('.todo-items').on('click', '.checkbox-wrapper', function(e){
        loadModel(state, 'Yay! you completed every todo. Enjoy the rest of your day!!')
    }
 });
+$('.todo-items').on('click', '.close-action', function(e){
+    var selectedData = e.currentTarget.previousElementSibling.innerText;
+    master = master.filter((item) => item.name !== selectedData);
+    refresh();
+    init();
+    triggerClick();
+    pendingData(lastEntry);
+    checkForEmpty();
+ });
+ $('.todo-items').on('click', '.reopen-action', function(e){
+    var selectedData = e.currentTarget.previousElementSibling.innerText;
+    for (var i = 0; i < master.length; i++){
+        if (master[i].name === selectedData){
+            master[i].status = 'Active'
+        }
+        refresh();
+        init();
+        triggerClick();
+        pendingData(lastEntry);
+        checkForEmpty();
+    }
+    refresh();
+    init();
+    triggerClick();
+    pendingData(lastEntry);
+    checkForEmpty();
+ });
 function loadData(todo, state){
     if (state === 'Active'){
-        $('.todo-items').append('<div class="todo-element"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action"> <i class="ri-close-fill" title = "Close todo"></i></div></div>');
+        $('.todo-items').append('<div class="todo-element"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action close-action"> <i class="ri-close-fill" title = "Close todo"></i></div></div>');
     }
     else if (state === 'Completed'){
-        $('.todo-items').append('<div class="todo-element todo-done"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action"> <i class="ri-refresh-line" title = "Re-open todo"></i></div></div>');
+        $('.todo-items').append('<div class="todo-element todo-done"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action reopen-action"> <i class="ri-refresh-line" title = "Re-open todo"></i></div></div>');
     }
     // triggerClick();
 };

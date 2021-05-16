@@ -158,17 +158,10 @@ body{
 .todo-action i{
     height: 100%;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: grid;
     place-items: center;
-}
-.todo-action .ri-close-fill{
-    color: red;
-    background: rgba(255, 0, 0,.25);
-}
-.todo-action .ri-refresh-line{
-    color: rgba(0, 255, 0,1);
-    background-color: rgba(0, 255, 0,.15);
+    color: var(--text-secondary);
 }
 .empty-message{
     position: absolute;
@@ -429,7 +422,7 @@ input:focus{
         background-image: var(--bg);
     }
     .todo-items{
-        max-height: 25vh;
+        max-height: 5vh;
     }
     .ri-history-line, .ri-file-add-fill{
         font-size: 5rem;

@@ -21,7 +21,7 @@
     --hover: rgba(0,0,0,.15);
     --text-primary: rgba(0,0,0,.9);
     --text-secondary: rgba(0,0,0,.5);
-    --bg: url('../images/bg-desktop-light.jpg');
+    --bg: linear-gradient(to left, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);;
 }
 .dark-mode{
     --primary: #181824;
@@ -30,7 +30,7 @@
     --hover: rgba(255,255,255,.12);
     --text-primary: rgba(255,255,255,.9);
     --text-secondary: rgba(255,255,255,.5);
-    --bg: url('../images/bg-desktop-dark.jpg');
+    --bg: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);;
 }
 body{
     background: var(--primary);
@@ -432,13 +432,13 @@ input:focus{
         --font-sm: .7rem;
     }
     .light-mode{
-        --bg: url('../images/bg-mobile-light.jpg');
+        --bg: background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
     }
     .dark-mode{
-        --bg: url('../images/bg-mobile-dark.jpg');
+        --bg: background-image: linear-gradient(60deg, #16a085 0%, #f4d03f 100%);
     }
     .header{
-        background-image: var(--bg);
+        background-image: linear-gradient(to left, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
     }
     .todo-items{
         max-height: 50vh;

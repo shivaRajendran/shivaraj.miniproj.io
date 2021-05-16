@@ -422,7 +422,7 @@ input:focus{
         background-image: var(--bg);
     }
     .todo-items{
-        max-height: 5vh;
+        max-height: 50vh;
     }
     .ri-history-line, .ri-file-add-fill{
         font-size: 5rem;

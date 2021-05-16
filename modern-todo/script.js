@@ -239,15 +239,15 @@ function pendingData(data){
     var pending = '';
     switch (data){
         case 'All':
-            pending = master.length + ' item(s).';
+            pending = master.length + ' item(s) overall.';
             break;
         case 'Active':
             var active = master.filter((item) => item.status === 'Active');
-            pending = active.length + ' item(s).';
+            pending = active.length + ' item(s) active.';
             break;
         case 'Completed':
             var completed = master.filter((item) => item.status === 'Completed');
-            pending = completed.length + ' item(s).';
+            pending = completed.length + ' item(s) completed.';
             break;
     }
     $('.pending').text(pending);

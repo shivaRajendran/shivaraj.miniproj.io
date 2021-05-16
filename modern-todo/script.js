@@ -17,6 +17,32 @@ var master = [
     }
 ];
 master = [];
+AOS.init();
+
+// You can also pass an optional settings object
+// below listed default settings
+AOS.init({
+  // Global settings:
+  disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+  startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+  initClassName: 'aos-init', // class applied after initialization
+  animatedClassName: 'aos-animate', // class applied on animation
+  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+  throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+  
+
+  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+  offset: 120, // offset (in px) from the original trigger point
+  delay: 0, // values from 0 to 3000, with step 50ms
+  duration: 500, // values from 0 to 3000, with step 50ms
+  easing: 'ease', // default easing for AOS animations
+  once: false, // whether animation should happen only once - while scrolling down
+  mirror: false, // whether elements should animate out while scrolling past them
+  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+
+});
 var lastEntry = 'All';
 var state = "";
 $('.mode-toggle').click(function(){
@@ -182,10 +208,10 @@ $('.todo-items').on('click', '.close-action', function(e){
  });
 function loadData(todo, state){
     if (state === 'Active'){
-        $('.todo-items').append('<div class="todo-element"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action close-action"> <i class="ri-close-fill" title = "Close todo"></i></div></div>');
+        $('.todo-items').append('<div class="todo-element"><div class="checkbox-wrapper" title="Mark as complete"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action close-action"> <i class="ri-close-fill" title = "Close todo"></i></div></div>');
     }
     else if (state === 'Completed'){
-        $('.todo-items').append('<div class="todo-element todo-done"><div class="checkbox-wrapper"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action reopen-action"> <i class="ri-refresh-line" title = "Re-open todo"></i></div></div>');
+        $('.todo-items').append('<div class="todo-element todo-done"><div class="checkbox-wrapper" title="Mark as complete"><div class="checkbox"><img src="images/tick.png" alt=""></div></div><div class="todo-desc">'+todo+'</div><div class="todo-action reopen-action"> <i class="ri-refresh-line" title = "Re-open todo"></i></div></div>');
     }
     // triggerClick();
 };
@@ -269,8 +295,8 @@ function checkForEmpty(){
 function loadModel(type, message){
     $('.popup').css('display', 'grid');
     if (type === 'err'){
-        $('.popup').append('<div class="modal err-modal"><div class="icon"><i class="ri-error-warning-line"></i></div><div class="modal-desc"><h1>Error</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
-    }else{
-        $('.popup').append('<div class="modal success-modal"><div class="icon"><i class="ri-checkbox-circle-line"></i></div><div class="modal-desc"><h1>Success</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
+        $('.popup').append('<div class="modal err-modal" data-aos="flip-down"><div class="icon"><i class="ri-error-warning-line"></i></div><div class="modal-desc"><h1>Error</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
+    }else if ('success'){
+        $('.popup').append('<div class="modal success-modal" data-aos="zoom-in"><div class="icon"><i class="ri-checkbox-circle-line"></i></div><div class="modal-desc"><h1>Success</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
     }
 };

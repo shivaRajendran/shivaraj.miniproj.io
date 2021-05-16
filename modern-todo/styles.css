@@ -436,6 +436,12 @@ input:focus{
     .close-popup{
         width: 50%;
     }
+    .modal-desc{
+        flex: 9;      
+    }
+    .modal .icon{
+        flex: .25;
+    }
 }
 @media (max-height: 500px){
     .modal{

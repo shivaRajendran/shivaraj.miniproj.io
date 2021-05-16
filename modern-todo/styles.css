@@ -336,7 +336,7 @@ button:active{
     position: fixed;
     top: 0;
     left: 0;
-    background: var(--shadow);
+    background: rgba(0,0,0,.75);
     z-index: 5;
     place-items: center;
     /* display: grid; */
@@ -384,7 +384,7 @@ button:active{
 }
 .modal-desc{
     display: flex;
-    flex: 5;
+    flex: 8;
     padding: 1rem;
     flex-direction: column;
     gap: 1.65rem;
@@ -409,8 +409,8 @@ input:focus{
     :root{
         --width: 90vw;
         --height: 45px;
-        --font-lg: 1rem;
-        --font-sm: .65rem;
+        --font-lg: .85rem;
+        --font-sm: .5rem;
     }
     .light-mode{
         --bg: url('../images/bg-mobile-light.jpg');

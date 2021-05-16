@@ -410,7 +410,7 @@ button:active{
         font-size: var(--font-sm);
     }
     .modal{
-        height: 60vh;
+        height: 35vh;
     }
     .close-popup{
         width: 50%;

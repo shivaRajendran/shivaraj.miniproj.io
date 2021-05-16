@@ -452,8 +452,8 @@ input:focus{
     .modal{
         height: 35vh;
     }
-    .close-popup{
-        width: 50%;
+    .close-popup, .btn-yes{
+        width: 20%;
     }
     .modal-desc{
         flex: 9;      

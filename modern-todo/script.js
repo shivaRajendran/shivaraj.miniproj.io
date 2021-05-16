@@ -58,6 +58,7 @@ function triggerClick(){
             handleCompleted();
             break;
     }
+    $('#search input').focus();
 }
 function init(){
     // $('.todo-element').remove();
@@ -69,45 +70,58 @@ $(document).ready(function(){
     init();
     $('.todo-outer-wrapper').addClass('d-none');
     checkForEmpty();
+    $('.popup').css('display', 'none');
 });
 $(document).on('keypress',function(e) {
     var duplicateFlag = false;
     if(e.which == 13) {
-        var data = $('input').val();
-        if (data === ""){
-            alert('Please give some value inorder to create a todo item!');
-        }else{
-            for (var i = 0; i < master.length; i++){
-                if(master[i].name === data){
-                    duplicateFlag = true;
-                    alert('The item that you have entered is already in the list');
-                    break;
-                }
-                else{
-                    duplicateFlag = false;
-                }
-            }
-            if (!duplicateFlag){
-                master.push({
-                    name: data,
-                    status: 'Active'
-                });
+        if( $(".popup").css('display') !== 'grid') {
+            var data = $('input').val();
+            if (data === ""){
+                triggerClick();
+                refresh();
+                $('.popup .modal').remove();
+                loadModel('err', 'Please give some value inorder to create a todo item!');
                 $('input').val('');
+            }else{
+                for (var i = 0; i < master.length; i++){
+                    if(master[i].name === data){
+                        duplicateFlag = true;
+                        triggerClick();
+                        $('.popup .modal').remove();
+                        $('.popup').css('display', 'grid');
+                        loadModel('err', 'The item that you have entered is already in the list!');
+                        break;
+                    }
+                    else{
+                        duplicateFlag = false;
+                    }
+                }
+                if (!duplicateFlag){
+                    master.push({
+                        name: data,
+                        status: 'Active'
+                    });
+                    $('input').val('');
+                }
+                triggerClick();
+                pendingData(lastEntry);
+                checkForEmpty();
             }
-            triggerClick();
-            pendingData(lastEntry);
-            checkForEmpty();
+            $('input').val('');
         }
     }
+    
 });
-$('.todo-element').click(function(e){
-    var c =e;
-    alert('clicked');
-})
 $('.clear').click(function(){
     refresh();
     clearCompleted();
 });
+$('.popup').on('click', '.close-popup', function(){
+    $('.popup').css('display', 'none');
+    $('.popup .modal').remove();
+    triggerClick();
+}); 
 $('.todo').on('click', '.create-todo',function(){
     $('#search input').focus();
 });
@@ -122,6 +136,10 @@ $('.todo-items').on('click', '.checkbox-wrapper', function(e){
        triggerClick();
        pendingData(lastEntry);
        checkForEmpty();
+   }
+   var active = master.filter((item) => item.status === 'Active');
+   if (active.length === 0){
+       loadModel('success', 'Yay! you completed every todo. Enjoy the rest of your day!!')
    }
 });
 function loadData(todo, state){
@@ -208,5 +226,14 @@ function checkForEmpty(){
             $('.todo-outer-wrapper').removeClass('d-none');
         }
         $(' body .todo .empty-message').remove();
+    }
+};
+function loadModel(type, message){
+    $('.popup').css('display', 'grid');
+    if (type === 'err'){
+        $('.popup').append('<div class="modal err-modal"><div class="icon"><i class="ri-error-warning-line"></i></div><div class="modal-desc"><h1>Error</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
+        $('#search input').focus();
+    }else{
+        $('.popup').append('<div class="modal success-modal"><div class="icon"><i class="ri-checkbox-circle-line"></i></div><div class="modal-desc"><h1>Success</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
     }
 };

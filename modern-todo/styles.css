@@ -21,6 +21,7 @@
     --hover: rgba(0,0,0,.15);
     --text-primary: rgba(0,0,0,.9);
     --text-secondary: rgba(0,0,0,.5);
+    --bg: url('../images/bg-desktop-light.jpg');
 }
 .dark-mode{
     --primary: #181824;
@@ -29,6 +30,7 @@
     --hover: rgba(255,255,255,.12);
     --text-primary: rgba(255,255,255,.9);
     --text-secondary: rgba(255,255,255,.5);
+    --bg: url('../images/bg-desktop-dark.jpg');
 }
 body{
     background: var(--primary);
@@ -60,7 +62,7 @@ body{
 .header{
     width: 100vw;
     height: 325px;
-    background-image: url('../images/bg-desktop-light.jpg');
+    background-image: var(--bg);
     background-size: cover;
     background-repeat: no-repeat;
     display: grid;
@@ -307,29 +309,80 @@ button:active{
 .nav-tabs-res .nav{
     height: 75%;
 }
+.toggle-visibility{
+    visibility: hidden;
+}
 .popup{
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background: var(--text-secondary);
+    background: var(--shadow);
     z-index: 5;
-    display: grid;
     place-items: center;
+    /* display: grid; */
+
 }
-.popup-modal{
+.modal{
     width: var(--width);
-    padding: 1rem;
     background: var(--primary);
     border-radius: 5px;
-}
-.popup-modal h1{
     display: flex;
-    align-items: center;
-    /* border-bottom: solid 1px var(--hover); */
-    color: red;
-    font-weight: 450;
+    height: 200px;
+}
+.err-modal{
+    border-left: solid 3px rgba(255, 0, 0,.75);
+}
+.success-modal{
+    border-left: solid 3px rgba(0, 255, 0,1);
+}
+.modal h1{
+    color: var(--text-primary);
+}
+.modal .icon{
+    flex: 1;
+    height: 100%;
+    
+    display: grid;
+    place-items: center;
+    padding: .85rem;
+}
+.err-modal .icon{
+    background: rgba(255, 0, 0,.25);
+}
+.success-modal .icon{
+    background:rgba(0, 255, 0,.1);
+}
+.modal .icon i{
+    font-size: 5rem;
+    font-weight: 300;
+}
+.err-modal i{
+    color: rgba(255, 0, 0,.75);
+}
+.success-modal i{
+    color: rgba(0, 255, 0,.75);
+}
+.modal-desc{
+    display: flex;
+    flex: 5;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+.details{
+    font-size: var(--font-lg);
+    color: var(--text-secondary);
+}
+.close-popup{
+    border-radius: 5px;
+    border: solid 1px var(--text-secondary);
+    background-color: transparent;
+    padding: .5rem 1rem;
+    width: 15%;
+    cursor: pointer;
+    color: var(--text-primary);
 }
 @media (max-width: 1024px){
     :root{
@@ -338,8 +391,14 @@ button:active{
         --font-lg: 1.25rem;
         --font-sm: .8rem;
     }
+    .light-mode{
+        --bg: url('../images/bg-mobile-light.jpg');
+    }
+    .dark-mode{
+        --bg: url('../images/bg-mobile-dark.jpg');
+    }
     .header{
-        background-image: url('../images/bg-mobile-light.jpg');
+        background-image: var(--bg);
     }
     .todo-items{
         max-height: 25vh;

@@ -416,3 +416,8 @@ button:active{
         width: 50%;
     }
 }
+@media (max-height: 700px){
+    .modal{
+        height: 50vh;
+    }
+}

@@ -409,8 +409,8 @@ input:focus{
     :root{
         --width: 90vw;
         --height: 45px;
-        --font-lg: 1.25rem;
-        --font-sm: .8rem;
+        --font-lg: 1rem;
+        --font-sm: .65rem;
     }
     .light-mode{
         --bg: url('../images/bg-mobile-light.jpg');
@@ -440,5 +440,8 @@ input:focus{
 @media (max-height: 500px){
     .modal{
         height: 55vh;
+    }
+    .todo-items{
+        max-height: 25vh;
     }
 }

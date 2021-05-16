@@ -45,6 +45,7 @@ AOS.init({
 });
 var lastEntry = 'All';
 var state = "";
+var warningStats = "";
 $('.mode-toggle').click(function(){
     $('body').toggleClass('dark-mode');
     $('.mode-toggle i').toggleClass('ri-contrast-2-line');
@@ -148,7 +149,7 @@ function focusInput(){
 }
 $('.clear').click(function(){
     refresh();
-    clearCompleted();
+    handleClearCompleted();
 });
 $('.popup').on('click', '.close-popup', function(){
     if (state === 'err'){
@@ -157,6 +158,14 @@ $('.popup').on('click', '.close-popup', function(){
     $('.popup').css('display', 'none');
     $('.popup .modal').remove();
     triggerClick();
+}); 
+$('.popup').on('click', '.btn-yes', function(){
+    master = master.filter((item) => item.status !== 'Completed');
+    init();
+    $('.popup').css('display', 'none');
+    $('.popup .modal').remove();
+    triggerClick();
+    pendingData(lastEntry);
 }); 
 $('.todo').on('click', '.create-todo',function(){
     focusInput();
@@ -255,11 +264,9 @@ function handleCompleted(){
 function refresh(){
     $('.todo-element, .todo-message').remove();
 };
-function clearCompleted(){
-    master = master.filter((item) => item.status !== 'Completed');
-    init();
-    triggerClick();
-    pendingData(lastEntry);
+function handleClearCompleted(){
+    state = 'warning';
+    loadModel(state, 'Are you sure you want to delete all the completed items?');
 }
 function pendingData(data){
     var pending = '';
@@ -296,7 +303,9 @@ function loadModel(type, message){
     $('.popup').css('display', 'grid');
     if (type === 'err'){
         $('.popup').append('<div class="modal err-modal" data-aos="flip-down"><div class="icon"><i class="ri-error-warning-line"></i></div><div class="modal-desc"><h1>Error</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
-    }else if ('success'){
+    }else if (type === 'success'){
         $('.popup').append('<div class="modal success-modal" data-aos="zoom-in"><div class="icon"><i class="ri-checkbox-circle-line"></i></div><div class="modal-desc"><h1>Success</h1><p class="details">'+message+'</p> <button class="close-popup">Close</button></div></div>');
+    }else if (type === 'warning'){
+        $('.popup').append('<div class="modal warning-modal" data-aos="zoom-out"><div class="icon"><i class="ri-error-warning-line"></i></div><div class="modal-desc"><h1>Warning</h1><p class="details">'+message+'</p><div class="buttons"> <button class="close-popup">No</button> <button class="btn-yes">Yes</button></div></div></div>');
     }
 };

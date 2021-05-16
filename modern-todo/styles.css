@@ -380,7 +380,7 @@ button:active{
     border: solid 1px var(--text-secondary);
     background-color: transparent;
     padding: .5rem 1rem;
-    width: 15%;
+    width: 30%;
     cursor: pointer;
     color: var(--text-primary);
 }
@@ -408,5 +408,8 @@ button:active{
     }
     .ri-history-line p{
         font-size: var(--font-sm);
+    }
+    .modal{
+        height: 60vh;
     }
 }

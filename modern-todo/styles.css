@@ -91,11 +91,11 @@ body{
     border-radius: 5px;
     display: flex;
 }
-.header .checkbox-wrapper{
+.header .checkbox-wrapper, .checkbox-wrapper-complete{
     height: var(--height);
     border-bottom: none;
 }
-.checkbox-wrapper{
+.checkbox-wrapper, .checkbox-wrapper-complete{
     width: var(--height);
     display: grid;
     align-items: center;
@@ -202,7 +202,7 @@ body{
     display: flex;
     border-bottom: solid 1px var(--hover);
 }
-.todo-element .checkbox-wrapper{
+.todo-element .checkbox-wrapper, .checkbox-wrapper-complete{
     height: var(--height);
 }
 .todo-desc{

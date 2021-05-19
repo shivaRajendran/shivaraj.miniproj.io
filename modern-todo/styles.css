@@ -338,8 +338,9 @@ button:active{
     left: 0;
     backdrop-filter: blur(5px);
     background: rgba(0,0,0,.3);
+    padding-top: 10vh;
     z-index: 5;
-    place-items: center;
+    justify-content: center;
     /* display: grid; */
 
 }

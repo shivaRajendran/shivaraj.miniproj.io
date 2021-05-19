@@ -128,7 +128,7 @@ body{
     height: var(--height);
     width: 100%;
     font-size: var(--font-lg);
-    font-weight: 500;
+    font-weight: 550;
     padding: 0 1.35rem;
     background: var(--bg-secondary);
     color: var(--text-primary);
@@ -136,7 +136,7 @@ body{
 }
 #search input::placeholder{
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 550;
 }
 .search-wrapper .checkbox img{
     display: none;
@@ -211,7 +211,7 @@ body{
     display: flex;
     align-items: center;
     font-size: var(--font-lg);
-    font-weight: 500;
+    font-weight: 550;
     color: var(--text-primary);
     padding: 0 1.5rem;
     background: var(--bg-secondary);
